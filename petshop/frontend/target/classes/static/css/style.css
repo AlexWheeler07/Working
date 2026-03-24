@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body {
+    font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fdfdfd;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.8rem;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+}
+
+.member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.member-row {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 3px solid #333;
+    border-radius: 12px;
+    padding: 15px 30px;
+    width: 100%;
+    max-width: 600px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 4px 6px 0px rgba(0,0,0,1);
+}
+
+.member-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 8px 0px rgba(0,0,0,1);
+}
+
+.member-icon {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #333;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.member-icon img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.member-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    min-width: 140px;
+    margin-right: 15px;
+    color: #222;
+}
+
+.member-desc {
+    font-size: 1.5rem;
+    color: #444;
+}
+
+/* API Pages */
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    font-size: 1.2rem;
+}
+
+.back-btn:hover {
+    background: #2980b9;
+}
+
+/* API Actions */
+.api-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-group input {
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    flex: 1;
+    max-width: 300px;
+    font-family: inherit;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #3498db;
+}
+
+.btn {
+    background: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #27ae60;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 150px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    box-shadow: 2px 3px 0px rgba(39, 174, 96, 1);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 3px 4px 0px rgba(39, 174, 96, 1);
+    background: #2ecc71;
+}
+
+/* Data Display */
+.data-display {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 3px solid #333;
+    box-shadow: 4px 6px 0px rgba(0,0,0,1);
+    overflow-x: auto;
+    font-family: 'Segoe UI', sans-serif; /* fallback to precise font for data */
+}
+
+.data-display h3 {
+    margin-top: 0;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.8rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 2px solid #333;
+}
+
+pre {
+    background: #f4f7f6;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Anirban Mondal - Grooming & Vaccinations</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">&larr; Back to Home</a>
+        <div class="api-actions">
+            <div style="display:flex; gap:10px;">
+                <a th:href="@{/member4/grooming}" class="btn">GET All Grooming Services</a>
+                <a th:href="@{/member4/vaccinations}" class="btn">GET All Vaccinations</a>
+            </div>
+            <div class="input-group">
+                <input type="number" id="petId1" placeholder="Enter Pet ID (e.g. 1)" min="1">
+                <button class="btn" onclick="if(document.getElementById('petId1').value) location.href='/member4/pets/' + document.getElementById('petId1').value + '/grooming'">GET Grooming Services by Pet ID</button>
+            </div>
+            <div class="input-group">
+                <input type="number" id="petId2" placeholder="Enter Pet ID (e.g. 2)" min="1">
+                <button class="btn" onclick="if(document.getElementById('petId2').value) location.href='/member4/pets/' + document.getElementById('petId2').value + '/vaccinations'">GET Vaccinations by Pet ID</button>
+            </div>
+        </div>
+
+        <!-- Add Forms -->
+        <div class="api-actions" style="margin-top:20px;">
+            <div style="padding:15px; border:1px solid #eee; border-radius:8px; margin-bottom:15px;">
+                <h4>Add New Grooming Service</h4>
+                <form th:action="@{/member4/grooming/add}" method="post" style="display:flex; gap:10px; margin-top:10px;">
+                    <input type="text" name="name" placeholder="Name" required style="padding:8px;">
+                    <input type="text" name="description" placeholder="Description" style="padding:8px;">
+                    <input type="number" step="0.01" name="price" placeholder="Price" style="padding:8px; width:100px;">
+                    <button type="submit" class="btn" style="margin-top:0;">Add</button>
+                </form>
+            </div>
+
+            <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+                <h4>Add New Vaccination</h4>
+                <form th:action="@{/member4/vaccinations/add}" method="post" style="display:flex; gap:10px; margin-top:10px;">
+                    <input type="text" name="name" placeholder="Name" required style="padding:8px;">
+                    <input type="text" name="description" placeholder="Description" style="padding:8px;">
+                    <input type="number" step="0.01" name="price" placeholder="Price" style="padding:8px; width:100px;">
+                    <button type="submit" class="btn" style="margin-top:0;">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="data-display" th:if="${dataTitle != null}">
+            <h3 th:text="${dataTitle}">Data Results</h3>
+
+            <!-- List Data -->
+            <table th:if="${dataList != null and !dataList.isEmpty()}">
+                <thead>
+                    <tr>
+                        <th th:each="key : ${dataList[0].keySet()}" th:text="${key}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${dataList}">
+                        <td th:each="value : ${item.values()}" th:text="${value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${dataList != null and dataList.isEmpty()}">No records found.</p>
+        </div>
+    </div>
+</body>
+</html>

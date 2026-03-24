@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Anirban Rout - Customers & Addresses</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">&larr; Back to Home</a>
+        <h1>Anirban Rout: Customers & Addresses</h1>
+        <p class="subtitle">API Endpoints required for Anirban Rout</p>
+
+        <div class="api-actions">
+            <div>
+                <a th:href="@{/member2/customers}" class="btn">GET All Customers</a>
+            </div>
+            <div class="input-group">
+                <input type="number" id="custId" placeholder="Enter Customer ID" min="1">
+                <button class="btn" onclick="if(document.getElementById('custId').value) location.href='/member2/customers/' + document.getElementById('custId').value">GET Customer by ID</button>
+            </div>
+        </div>
+
+        <div class="data-display" th:if="${dataTitle != null}">
+            <h3 th:text="${dataTitle}">Data Results</h3>
+
+            <!-- List Data -->
+            <table th:if="${dataList != null and !dataList.isEmpty()}">
+                <thead>
+                    <tr>
+                        <th th:each="key : ${dataList[0].keySet()}" th:text="${key}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${dataList}">
+                        <td th:each="value : ${item.values()}" th:text="${value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${dataList != null and dataList.isEmpty()}">No records found.</p>
+
+            <!-- Single Data -->
+            <table th:if="${singleData != null and !singleData.isEmpty()}">
+                <tbody>
+                    <tr th:each="entry : ${singleData}">
+                        <th th:text="${entry.key}" style="width: 200px;"></th>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${singleData != null and singleData.isEmpty()}">No record found.</p>
+        </div>
+    </div>
+</body>
+</html>
