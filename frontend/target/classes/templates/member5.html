@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alex Wheeler - Food, Suppliers & Employees</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">&larr; Back to Home</a>
+        <div class="api-actions">
+            <div class="input-group">
+                <a th:href="@{/member5/food}" class="btn">GET All Food</a>
+                <input type="number" id="foodId" placeholder="Enter Food ID" min="1">
+                <button class="btn" onclick="if(document.getElementById('foodId').value) location.href='/member5/food/' + document.getElementById('foodId').value">GET Food by ID</button>
+            </div>
+            
+            <div class="input-group">
+                <a th:href="@{/member5/suppliers}" class="btn">GET All Suppliers</a>
+                <input type="number" id="supId" placeholder="Enter Supplier ID" min="1">
+                <button class="btn" onclick="if(document.getElementById('supId').value) location.href='/member5/suppliers/' + document.getElementById('supId').value">GET Supplier by ID</button>
+            </div>
+            
+            <div class="input-group">
+                <a th:href="@{/member5/employees}" class="btn">GET All Employees</a>
+                <input type="number" id="empId" placeholder="Enter Employee ID" min="1">
+                <button class="btn" onclick="if(document.getElementById('empId').value) location.href='/member5/employees/' + document.getElementById('empId').value">GET Employee by ID</button>
+            </div>
+        </div>
+
+        <!-- Add Forms -->
+        <div class="api-actions" style="margin-top:20px;">
+            <div style="padding:15px; border:1px solid #eee; border-radius:8px; margin-bottom:15px;">
+                <h4>Add New Pet Food</h4>
+                <form th:action="@{/member5/food/add}" method="post" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+                    <input type="text" name="name" placeholder="Name" required style="padding:8px;">
+                    <input type="text" name="brand" placeholder="Brand" style="padding:8px;">
+                    <input type="text" name="type" placeholder="Type" style="padding:8px;">
+                    <input type="number" name="quantity" placeholder="Quantity" style="padding:8px; width:100px;">
+                    <input type="number" step="0.01" name="price" placeholder="Price" style="padding:8px; width:100px;">
+                    <button type="submit" class="btn" style="margin-top:0;">Add Food</button>
+                </form>
+            </div>
+
+            <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+                <h4>Add New Supplier</h4>
+                <form th:action="@{/member5/suppliers/add}" method="post" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
+                    <input type="text" name="name" placeholder="Name" required style="padding:8px;">
+                    <input type="text" name="contactPerson" placeholder="Contact Person" style="padding:8px;">
+                    <input type="text" name="phoneNumber" placeholder="Phone Number" style="padding:8px;">
+                    <input type="email" name="email" placeholder="Email" style="padding:8px;">
+                    <br style="flex-basis: 100%; height: 0;">
+                    <input type="text" name="street" placeholder="Street" style="padding:8px;">
+                    <input type="text" name="city" placeholder="City" style="padding:8px;">
+                    <input type="text" name="state" placeholder="State" style="padding:8px;">
+                    <input type="text" name="zipCode" placeholder="Zip Code" style="padding:8px;">
+                    <button type="submit" class="btn" style="margin-top:0;">Add Supplier</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="data-display" th:if="${dataTitle != null}">
+            <h3 th:text="${dataTitle}">Data Results</h3>
+
+            <!-- List Data -->
+            <table th:if="${dataList != null and !dataList.isEmpty()}">
+                <thead>
+                    <tr>
+                        <th th:each="key : ${dataList[0].keySet()}" th:text="${key}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${dataList}">
+                        <td th:each="value : ${item.values()}" th:text="${value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${dataList != null and dataList.isEmpty()}">No records found.</p>
+
+            <!-- Single Data -->
+            <table th:if="${singleData != null and !singleData.isEmpty()}">
+                <tbody>
+                    <tr th:each="entry : ${singleData}">
+                        <th th:text="${entry.key}" style="width: 200px;"></th>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${singleData != null and singleData.isEmpty()}">No record found.</p>
+        </div>
+    </div>
+</body>
+</html>

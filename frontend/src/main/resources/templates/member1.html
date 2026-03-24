@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Roshmita Choudhury - Pets & Categories</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">&larr; Back to Home</a>
+        <h1>Roshmita Choudhury: Pets & Categories</h1>
+        <p class="subtitle">API Endpoints required for Roshmita Choudhury</p>
+
+        <div class="api-actions">
+            <div>
+                <a th:href="@{/member1/pets}" class="btn">GET All Pets</a>
+            </div>
+            <div class="input-group">
+                <input type="number" id="petId" placeholder="Enter Pet ID (e.g. 1)" min="1">
+                <button class="btn" onclick="if(document.getElementById('petId').value) location.href='/member1/pets/' + document.getElementById('petId').value">GET Pet by ID</button>
+            </div>
+            <div class="input-group">
+                <input type="text" id="catName" placeholder="Enter Category (e.g. Dogs)">
+                <button class="btn" onclick="if(document.getElementById('catName').value) location.href='/member1/pets/category/' + document.getElementById('catName').value">GET Pets by Category</button>
+            </div>
+        </div>
+
+        <div class="data-display" th:if="${dataTitle != null}">
+            <h3 th:text="${dataTitle}">Data Results</h3>
+
+            <!-- List Data -->
+            <table th:if="${dataList != null and not #lists.isEmpty(dataList)}">
+                <thead>
+                    <tr>
+                        <th th:each="key : ${dataList[0].keySet()}" th:text="${key}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${dataList}">
+                        <td th:each="value : ${item.values()}" th:text="${value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${dataList != null and #lists.isEmpty(dataList)}">No records found.</p>
+
+            <!-- Single Data -->
+            <table th:if="${singleData != null and not #maps.isEmpty(singleData)}">
+                <tbody>
+                    <tr th:each="entry : ${singleData}">
+                        <th th:text="${entry.key}" style="width: 200px;"></th>
+                        <td th:text="${entry.value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${singleData != null and #maps.isEmpty(singleData)}">No record found.</p>
+        </div>
+    </div>
+</body>
+</html>

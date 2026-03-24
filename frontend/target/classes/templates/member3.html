@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sneha Ghosh - Transactions</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">&larr; Back to Home</a>
+        <div class="api-actions">
+            <div><a th:href="@{/member3/transactions}" class="btn">GET All Transactions</a></div>
+            <div class="input-group">
+                <input type="number" id="custId" placeholder="Enter Customer ID (e.g. 1)" min="1">
+                <button class="btn" onclick="if(document.getElementById('custId').value) location.href='/member3/customers/' + document.getElementById('custId').value + '/transactions'">GET Transactions by Customer ID</button>
+            </div>
+        </div>
+
+        <div class="data-display" th:if="${dataTitle != null}">
+            <h3 th:text="${dataTitle}">Data Results</h3>
+
+            <!-- List Data -->
+            <table th:if="${dataList != null and !dataList.isEmpty()}">
+                <thead>
+                    <tr>
+                        <th th:each="key : ${dataList[0].keySet()}" th:text="${key}"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${dataList}">
+                        <td th:each="value : ${item.values()}" th:text="${value}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p th:if="${dataList != null and dataList.isEmpty()}">No records found.</p>
+        </div>
+    </div>
+</body>
+</html>

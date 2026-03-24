@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Shop</title>
+    <link rel="stylesheet" th:href="@{/css/style.css?v=2}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Pet Shop</h1>
+        <p class="subtitle">Select the members to view their APIs</p>
+
+        <div class="member-list">
+            <div class="member-row" onclick="location.href='/member1'">
+                <div class="member-icon">
+                    <img src="/images/member_1.png" alt="Roshmita Choudhury" />
+                </div>
+                <div class="member-title">Roshmita Choudhury</div>
+                <div class="member-desc">(Pets and categories)</div>
+            </div>
+            
+            <div class="member-row" onclick="location.href='/member2'">
+                <div class="member-icon">
+                    <img src="/images/member_2.png" alt="Anirban Rout" />
+                </div>
+                <div class="member-title">Anirban Rout</div>
+                <div class="member-desc">(Customers and addresses)</div>
+            </div>
+            
+            <div class="member-row" onclick="location.href='/member3'">
+                <div class="member-icon">
+                    <img src="/images/member_3.png" alt="Sneha Ghosh" />
+                </div>
+                <div class="member-title">Sneha Ghosh</div>
+                <div class="member-desc">(Transactions)</div>
+            </div>
+            
+            <div class="member-row" onclick="location.href='/member4'">
+                <div class="member-icon">
+                    <img src="/images/member_4.png" alt="Anirban Mondal" />
+                </div>
+                <div class="member-title">Anirban Mondal</div>
+                <div class="member-desc">(Grooming and vaccinations)</div>
+            </div>
+            
+            <div class="member-row" onclick="location.href='/member5'">
+                <div class="member-icon">
+                    <img src="/images/member_5.png" alt="Alex Wheeler" />
+                </div>
+                <div class="member-title">Alex Wheeler</div>
+                <div class="member-desc">(Food, supplier, employee)</div>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
