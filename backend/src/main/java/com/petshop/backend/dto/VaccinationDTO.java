@@ -1,9 +1,8 @@
 package com.petshop.backend.dto;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
-
 
 @Data
 @NoArgsConstructor
@@ -14,7 +13,5 @@ public class VaccinationDTO {
     private String description;
     private Double price;
     private Boolean available;
-
-
 
 }
